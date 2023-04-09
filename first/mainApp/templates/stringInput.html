@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/contact/">Contact</a>
+    <form method="post" action="">
+        {% csrf_token %}
+        <textarea required name="data" rows="5" cols="60">{{data}}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if show %}
+    <table border="2px" padding="2px">
+        <tr>
+            <th>Lowor Case Vowels</th>
+            <td>{{lcv}}</td>
+        </tr>
+        <tr>
+            <th>Lowor Case Consonant</th>
+            <td>{{lcc}}</td>
+        </tr>
+        <tr>
+            <th>Upper Case Vowels</th>
+            <td>{{ucv}}</td>
+        </tr>
+        <tr>
+            <th>Upper Case Consonant</th>
+            <td>{{ucc}}</td>
+        </tr>
+        <tr>
+            <th>Digit</th>
+            <td>{{digit}}</td>
+        </tr>
+        <tr>
+            <th>Space</th>
+            <td>{{sp}}</td>
+        </tr>
+        <tr>
+            <th>Special</th>
+            <td>{{special}}</td>
+        </tr>
+    </table>
+    {% endif %}
+</body>
+</html>
