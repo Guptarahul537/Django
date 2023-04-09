@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block titel %}
+<title>Crud App | Add Record</title>
+{% endblock %}
+{% block content %}
+            <a id="btn" href="/">Home</a>
+            <h1>Add Employee Record</h1>
+            <table class="table">
+                <form method="post" action="" class="mainform">
+                    {% csrf_token %}
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Enter Employee Name: ">
+                    <br>
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter Email Address: ">
+                    <br>
+                    <label>Phone</label>
+                    <input type="text" name="phone" placeholder="Enter Phone Number: ">
+                    <br>
+                    <label>Salary</label>
+                    <input type="number" name="salary" placeholder="Enter Salary: ">
+                    <br>
+                    <label>City</label>
+                    <input type="text" name="city" placeholder="Enter City Name: ">
+                    <br>
+                    <label>State</label>
+                    <input type="text" name="stare" placeholder="Enter State Name: ">
+                    <br>
+                    <button type="submit">Add</button>
+                </form>
+            </table>
+{% endblock %}

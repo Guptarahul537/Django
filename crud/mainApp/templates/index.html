@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    {% block titel %}
+    <title>Crud App | Home</title>
+    {% endblock %}
+</head>
+
+<body>
+    <div class="main">
+        <div class="center">
+            {% block content %}
+            <h1>Employee Record Table</h1>
+            <a id="btn" href="/add">Add Record</a>
+            <form method="post" class="search">
+                {% csrf_token %}
+                <input type="search" name="search" placeholder="Enter Something to Search : ">
+                <button type="submit">Search</button>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.salary}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.state}}</td>
+                    <td><a href="/update/{{item.id}}"><span class="material-symbols-outlined">edit</span></td>
+                    <td><a href="#" onclick="fun('{{item.id}}')"><span class="material-symbols-outlined">delete_forever</span></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <script>
+                function fun(id){
+                    if(confirm("Are You Sure to Delete this Item"))
+                    window.open("http://localhost:8000/delete/"+id)
+                }
+            </script>
+            {% endblock %}
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Crud App | Home</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="center">
+            <h1>Employee Record Table</h1>
+            <a id="btn" href="/add">Add Record</a>
+            <form method="post" class="search">
+                {% csrf_token %}
+                <input type="search" name="search" placeholder="Enter Something to Search : ">
+                <button type="submit">Search</button>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.salary}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.state}}</td>
+                    <td><a href="/update/{{item.id}}">Update</td>
+                    <td><a href="/delete/{{item.id}}">Delete</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html> -->

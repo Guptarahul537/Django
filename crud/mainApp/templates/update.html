@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block titel %}
+    <title>Crud App | Update Record</title>
+{% endblock %}
+{% block content %}
+            <a id="btn" href="/">Home</a>
+            <h1>Update Employee Record</h1>
+            <form method="post" action="" class="mainform">
+                {% csrf_token %}
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Enter Employee Name: " value="{{d.name}}">
+                <br>
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter Email Address: " value="{{d.email}}">
+                <br>
+                <label>Phone</label>
+                <input type="text" name="phone" placeholder="Enter Phone Number: " value="{{d.phone}}">
+                <br>
+                <label>Salary</label>
+                <input type="number" name="salary" placeholder="Enter Salary: " value="{{d.salary}}">
+                <br>
+                <label>City</label>
+                <input type="text" name="city" placeholder="Enter City Name: " value="{{d.city}}">
+                <br>
+                <label>State</label>
+                <input type="text" name="state" placeholder="Enter State Name: " value="{{d.state}}">
+                <br>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+{% endblock %}
